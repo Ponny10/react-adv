@@ -1,50 +1,53 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+El proyecto cuenta con la implementación de:
 
-Currently, two official plugins are available:
+- [react-router-dom@6.29.0](https://reactrouter.com/en/6.29.0/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Otras características
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
+- `Control de rutas dinámicas:`
 
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+<Routes>
+  {routes.map(({ Component, path }: _Routes) => (
+    <Route key={path} path={path} element={<Component />} />
+  ))}
+  <Route path="/*" element={<Navigate to={routes[0].to} />} />
+</Routes>
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- `Opción a rutas dinámicas`
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+````js
+import { JSX } from 'react';
+import { LazyOne, LazyThree, LazyTwo } from '../pages';
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+export interface _Routes {
+    Component: () => JSX.Element;
+    name: string;
+    path: string;
+    to: string;
+}
+
+export const routes: _Routes[] = [
+    {
+        Component: LazyOne,
+        name: 'Lazy 1',
+        to: 'lazy-1',
+        path: '/lazy-1',
+    },
+    {
+        Component: LazyTwo,
+        name: 'Lazy 2',
+        to: 'lazy-2',
+        path: '/lazy-2',
+    },
+    {
+        Component: LazyThree,
+        name: 'Lazy 3',
+        to: 'lazy-3',
+        path: '/lazy-3',
+    },
+];
 ```
