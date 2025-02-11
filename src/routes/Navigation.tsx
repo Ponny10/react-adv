@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
 
-import { _Routes, routes } from './routes'
-import logo from './../assets/react.svg'
+import logo from './../react.svg'
+import { Shopping } from '../02-component-patterns/pages/Shopping'
 
 export const Navigation = () => {
     return (
@@ -10,30 +10,28 @@ export const Navigation = () => {
                 <nav>
                     <img src={logo} alt="React Logo" />
                     <ul>
-                        {
-                            routes.map((route: _Routes) => (
-                                <li key={route.name}>
-                                    <NavLink
-                                        to={route.to}
-                                        className={({ isActive }) => isActive ? 'nav-active' : ''}>
-                                        {route.name}
-                                    </NavLink>
-                                </li>
-                            ))
-                        }
+                        <li>
+                            <NavLink to={'/home'} className={({ isActive }) => isActive ? 'nav-active' : ''}>
+                                ShoppingPage
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/about'} className={({ isActive }) => isActive ? 'nav-active' : ''}>
+                                About
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to={'/users'} className={({ isActive }) => isActive ? 'nav-active' : ''}>
+                                Users
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
                 <Routes>
-                    {
-                        routes.map(({Component, path}: _Routes) => (
-                            <Route
-                                key={path}
-                                path={path}
-                                element={<Component/>}
-                            />
-                        ))
-                    }
-                    <Route path='/*' element={<Navigate to={routes[0].to} />} />
+                    <Route path={'/home'} element={<Shopping />}/>
+                    <Route path={'/about'} element={<h1>About</h1>}/>
+                    <Route path={'/users'} element={<h1>Users</h1>}/>
+                    <Route path='/*' element={<Navigate to={'/home'} />} />
                 </Routes>
             </div>
         </BrowserRouter>
