@@ -1,6 +1,5 @@
-
-
-interface Props {
+interface _ProductCardProps {
+    className?: string;
     children?: ReactElement | ReactElement[];
     product: Product;
 }
@@ -12,12 +11,16 @@ interface Product {
 }
 
 interface PropsButtons {
-    cart: number;
-    increaseBy: (value: number) => void;
+    className?: string;
 }
 
 interface ProductContextProps {
     cart: number;
     increaseBy: (value: number) => void;
     product: Product;
+}
+
+interface ProductImage {
+    className?: string;
+    img?: string;
 }

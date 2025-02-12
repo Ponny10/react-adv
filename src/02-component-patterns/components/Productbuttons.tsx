@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import { ProductContext } from './ProductCard';
 import styles from '../styles/styles.module.css';
 
-export const ProductButtons = () => {
+export const ProductButtons = ({className}: PropsButtons) => {
     const {cart, increaseBy} = useContext(ProductContext);
     
     return (
         <div className={styles.buttonsContainer}>
-            <button className={styles.buttonMinus} onClick={() => increaseBy(-1)}>-</button>
-            <div className={styles.countLabel}>{cart}</div>
-            <button className={styles.buttonAdd} onClick={() => increaseBy(1)}>+</button>
+            <button className={`${styles.buttonMinus} ${className}`} onClick={() => increaseBy(-1)}>-</button>
+            <div className={`${styles.countLabel} ${className}`}>{cart}</div>
+            <button className={`${styles.buttonAdd} ${className}`} onClick={() => increaseBy(1)}>+</button>
         </div>
     );
 }

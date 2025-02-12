@@ -8,13 +8,13 @@ import styles from '../styles/styles.module.css';
 const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
-const ProductCard = ({ children, product }: Props) => {
+const ProductCard = ({ className, children, product }: _ProductCardProps) => {
 
     const { cart, increaseBy } = useProduct();
 
     return (
         <Provider value={{ cart, increaseBy, product }}>
-            <div className={styles.productCard}>
+            <div className={`${styles.productCard} ${className}`}>
                 {children}
             </div>
         </Provider>
