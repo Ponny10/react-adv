@@ -1,13 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useProduct = (onChange?: () => void) => {
-    const [cart, setCart] = useState(0);
+interface _UseProductProps {
+    product: _Product;
+    onChange?: (args: _onChangeArgs) => void;
+    value: number;
+}
+export const useProduct = ({onChange, product, value = 0}: _UseProductProps) => {
+    
+    const [cart, setCart] = useState(value);
+
+    const isControlled = useRef(!!onChange);
 
     const increaseBy = (value: number) => {
-        setCart((prev: number) => Math.max(prev + value, 0));
 
-        onChange?.();
+        if (isControlled) {
+            return onChange!({counter: value, product})
+        }
+
+        const newCart = Math.max(cart + value, 0);
+        setCart(newCart);
+
+        onChange?.({counter: newCart, product});
     }
+
+    useEffect(() => {
+      setCart(value);
+    }, [value]);
 
     return {
         cart,

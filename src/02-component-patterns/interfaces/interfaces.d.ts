@@ -6,11 +6,12 @@ interface _ProductCardHOCProps {
 }
 
 interface _ProductCardProps {
-    className?: string;
     children?: ReactElement | ReactElement[];
+    className?: string;
+    onChange?: (args: _onChangeArgs) => void;
     product: Product;
     style?: React.CSSProperties;
-    onChange?: () => void;
+    value: number;
 }
 
 interface _Product {
@@ -38,4 +39,9 @@ interface _ProductImage {
 interface _ProductTittle {
     title?: string;
     className?: string;
+}
+
+interface _onChangeArgs {
+    counter: number;
+    product: _Product;
 }
