@@ -17,3 +17,9 @@
     color: rgb(218, 214, 214);
     border-color: rgb(218, 214, 214);
 }
+
+.shoppingCart {
+    position: fixed;
+    right: 12px;
+    top: 0px;
+}

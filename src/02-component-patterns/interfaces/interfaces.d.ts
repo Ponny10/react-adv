@@ -1,7 +1,7 @@
 interface _ProductCardHOCProps {
     Title: (Props: _ProductTittle) => JSX.Element;
-    Image: (Props: ProductImage) => JSX.Element;
-    Buttons: (Props: PropsButtons) => JSX.Element;
+    Image: (Props: _ProductImage) => JSX.Element;
+    Buttons: (Props: _PropsButtons) => JSX.Element;
     (Props: _ProductCardProps): JSX.Element;
 }
 
@@ -10,9 +10,10 @@ interface _ProductCardProps {
     children?: ReactElement | ReactElement[];
     product: Product;
     style?: React.CSSProperties;
+    onChange?: () => void;
 }
 
-interface Product {
+interface _Product {
     id: string;
     title: string;
     imgProduct?: string;
