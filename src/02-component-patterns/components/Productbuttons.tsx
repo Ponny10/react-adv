@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ProductContext } from './ProductCard';
 import styles from '../styles/styles.module.css';
 
-export const ProductButtons = ({className}: PropsButtons) => {
+export const ProductButtons = ({className}: _PropsButtons) => {
     const {cart, increaseBy} = useContext(ProductContext);
     
     return (

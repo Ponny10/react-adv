@@ -1,7 +1,15 @@
+interface _ProductCardHOCProps {
+    Title: (Props: _ProductTittle) => JSX.Element;
+    Image: (Props: ProductImage) => JSX.Element;
+    Buttons: (Props: PropsButtons) => JSX.Element;
+    (Props: _ProductCardProps): JSX.Element;
+}
+
 interface _ProductCardProps {
     className?: string;
     children?: ReactElement | ReactElement[];
     product: Product;
+    style?: React.CSSProperties;
 }
 
 interface Product {
@@ -10,17 +18,23 @@ interface Product {
     imgProduct?: string;
 }
 
-interface PropsButtons {
+interface _PropsButtons {
     className?: string;
 }
 
-interface ProductContextProps {
+interface _ProductContextProps {
     cart: number;
     increaseBy: (value: number) => void;
     product: Product;
 }
 
-interface ProductImage {
+interface _ProductImage {
     className?: string;
     img?: string;
+    style?: React.CSSProperties;
+}
+
+interface _ProductTittle {
+    title?: string;
+    className?: string;
 }
