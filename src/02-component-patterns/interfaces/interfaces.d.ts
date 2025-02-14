@@ -6,7 +6,8 @@ interface _ProductCardHOCProps {
 }
 
 interface _ProductCardProps {
-    children?: ReactElement | ReactElement[];
+    /* children?: ReactElement | ReactElement[]; */
+    children: () => JSX.Element;
     className?: string;
     initialValues?: _InitialValues;
     onChange?: (args: _onChangeArgs) => void;

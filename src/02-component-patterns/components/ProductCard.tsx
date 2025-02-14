@@ -31,7 +31,7 @@ const ProductCard = ({
                 className={`${styles.productCard} ${className}`}
                 style={style}
             >
-                {children}
+                {children()}
             </div>
         </Provider>
     );

@@ -24,12 +24,17 @@ export const Shopping = () => {
                     maxCount: 10,
                 }}
             >
-                <ProductImage
-                    className='productImage'
-                    style={{ boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)' }}
-                />
-                <ProductTitle title={product.title} className='text-white' />
-                <ProductButtons className='productButtons' />
+                {() => (
+                    <>
+                        <ProductImage
+                            className='productImage'
+                            style={{ boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)' }}
+                        />
+                        <ProductTitle title={product.title} className='text-white' />
+                        <ProductButtons className='productButtons' />
+
+                    </>
+                )}
             </ProductCard>
         </div>
     )
