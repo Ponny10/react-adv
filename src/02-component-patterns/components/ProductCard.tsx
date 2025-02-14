@@ -8,9 +8,22 @@ import styles from '../styles/styles.module.css';
 const ProductContext = createContext({} as _ProductContextProps);
 const { Provider } = ProductContext;
 
-const ProductCard = ({ className, children, product, style, onChange, value = 0 }: _ProductCardProps) => {
+const ProductCard = ({
+    children,
+    className,
+    initialValues,
+    onChange,
+    product,
+    style,
+    value = 0,
+}: _ProductCardProps) => {
 
-    const { cart, increaseBy } = useProduct({onChange, product, value});
+    const { cart, increaseBy } = useProduct({
+        initialValues,
+        onChange, 
+        product, 
+        value,
+    });
 
     return (
         <Provider value={{ cart, increaseBy, product }}>

@@ -8,10 +8,11 @@ interface _ProductCardHOCProps {
 interface _ProductCardProps {
     children?: ReactElement | ReactElement[];
     className?: string;
+    initialValues?: _InitialValues;
     onChange?: (args: _onChangeArgs) => void;
     product: Product;
     style?: React.CSSProperties;
-    value: number;
+    value?: number;
 }
 
 interface _Product {
@@ -48,4 +49,9 @@ interface _onChangeArgs {
 
 interface _ProductInCart extends _Product {
     count: number;
+}
+
+interface _InitialValues {
+    count?: number;
+    maxCount?: number;
 }
