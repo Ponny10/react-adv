@@ -1,0 +1,13 @@
+const product = {
+    id: '1',
+    title: 'Coffe - Mug',
+    imgProduct: 'coffee-mug.png',
+}
+
+const product2 = {
+    id: '2',
+    title: 'Coffe - Meme',
+    imgProduct: 'coffee-mug2.png',
+}
+
+export const products: _Product[] = [product, product2];

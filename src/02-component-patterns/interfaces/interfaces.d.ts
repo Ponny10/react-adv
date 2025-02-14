@@ -45,3 +45,7 @@ interface _onChangeArgs {
     counter: number;
     product: _Product;
 }
+
+interface _ProductInCart extends _Product {
+    count: number;
+}
