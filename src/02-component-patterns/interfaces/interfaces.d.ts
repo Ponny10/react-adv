@@ -7,7 +7,7 @@ interface _ProductCardHOCProps {
 
 interface _ProductCardProps {
     /* children?: ReactElement | ReactElement[]; */
-    children: () => JSX.Element;
+    children: (args: _ProductCardHandlers) => JSX.Element;
     className?: string;
     initialValues?: _InitialValues;
     onChange?: (args: _onChangeArgs) => void;
@@ -28,8 +28,10 @@ interface _PropsButtons {
 
 interface _ProductContextProps {
     cart: number;
-    increaseBy: (value: number) => void;
+    maxCount?: number;
     product: Product;
+
+    increaseBy: (value: number) => void;
 }
 
 interface _ProductImage {
@@ -55,4 +57,14 @@ interface _ProductInCart extends _Product {
 interface _InitialValues {
     count?: number;
     maxCount?: number;
+}
+
+interface _ProductCardHandlers {
+    count: number;
+    isMaxCountReached: boolean;
+    maxCount?: number;
+    product: _Product;
+
+    increaseBy: (value: number) => void;
+    reset: () => void;
 }

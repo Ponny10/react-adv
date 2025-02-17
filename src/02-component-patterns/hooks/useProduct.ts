@@ -9,7 +9,8 @@ interface _UseProductProps {
 export const useProduct = ({
     onChange,
     product,
-    value = 0, initialValues
+    value = 0,
+    initialValues,
 }: _UseProductProps) => {
 
     const [cart, setCart] = useState(initialValues?.count || value);
@@ -39,10 +40,16 @@ export const useProduct = ({
         setCart(value);
     }, [value]);
 
-
+    const reset = () => {
+        setCart(initialValues?.count || value);
+    }
 
     return {
         cart,
+        isMaxCountReached: !!initialValues?.count && initialValues.maxCount === cart,
+        maxCount: initialValues?.maxCount,
+
         increaseBy,
+        reset,
     }
 }
